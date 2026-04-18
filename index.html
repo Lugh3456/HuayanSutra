@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read and study the Avatamsaka Sutra (Huayan Sutra) — one of Mahayana Buddhism's grandest texts — chapter by chapter with line-by-line explanation in English and Chinese.">
+  <title>Avatamsaka Sutra | 大方广佛华严经</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Chapter grid (39 cards, compact) ── */
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.75rem;
+      max-width: 960px;
+      margin: 1.5rem auto 3.5rem;
+      padding: 0 1.5rem;
+    }
+
+    .chapter-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 1rem 1rem 0.9rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .chapter-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.09);
+      border-color: var(--red);
+    }
+
+    .chapter-card.coming {
+      opacity: 0.5;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .chapter-num {
+      font-size: 0.72rem;
+      color: var(--saffron);
+      letter-spacing: 0.1em;
+      font-family: "Noto Sans SC", sans-serif;
+    }
+
+    .chapter-zh {
+      font-family: "Noto Serif SC", serif;
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .coming-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-top: 0.15rem;
+    }
+
+    @media (max-width: 600px) {
+      .chapter-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<div class="portal-bar">
+  <a href="https://lugh3456.github.io/DharmaGate/" class="portal-bar-link">← The Dharma Gate · 法门无量</a>
+</div>
+
+<header class="site-header">
+  <h1>Avatamsaka Sutra</h1>
+  <p class="header-zh">大方广佛华严经</p>
+  <p class="header-tradition">Mahayana · 大乘 · Huayan</p>
+</header>
+
+<section class="intro">
+  <p>
+    The Avatamsaka Sutra — the Flower Garland Scripture — is the grandest of all Buddhist sutras.
+    Spoken by Vairocana Buddha immediately after his enlightenment under the Bodhi Tree, it describes
+    the cosmos as an infinite web of interdependence, symbolised by <em>Indra's Net (因陀罗网)</em>:
+    a net of jewels in which every jewel perfectly reflects every other. Its central revelation is
+    that all phenomena interpenetrate without obstruction — <em>事事无碍</em> — and that the entire
+    universe is the body of the Buddha.
+  </p>
+</section>
+
+<main class="chapter-grid" id="main-content">
+
+  <!-- Chapters 1–6: live -->
+  <a href="section1.html" class="chapter-card">
+    <span class="chapter-num">第一品</span>
+    <span class="chapter-zh">世主妙严品</span>
+  </a>
+
+  <a href="section2.html" class="chapter-card">
+    <span class="chapter-num">第二品</span>
+    <span class="chapter-zh">如来现相品</span>
+  </a>
+
+  <a href="section3.html" class="chapter-card">
+    <span class="chapter-num">第三品</span>
+    <span class="chapter-zh">普贤三昧品</span>
+  </a>
+
+  <a href="section4.html" class="chapter-card">
+    <span class="chapter-num">第四品</span>
+    <span class="chapter-zh">世界成就品</span>
+  </a>
+
+  <a href="section5.html" class="chapter-card">
+    <span class="chapter-num">第五品</span>
+    <span class="chapter-zh">华藏世界品</span>
+  </a>
+
+  <a href="section6.html" class="chapter-card">
+    <span class="chapter-num">第六品</span>
+    <span class="chapter-zh">毗卢遮那品</span>
+  </a>
+
+  <!-- Chapters 7–39: coming soon -->
+  <a href="section7.html" class="chapter-card">
+    <span class="chapter-num">第七品</span>
+    <span class="chapter-zh">如来名号品</span>
+  </a>
+
+  <a href="section8.html" class="chapter-card">
+    <span class="chapter-num">第八品</span>
+    <span class="chapter-zh">四圣谛品</span>
+  </a>
+
+  <a href="section9.html" class="chapter-card">
+    <span class="chapter-num">第九品</span>
+    <span class="chapter-zh">光明觉品</span>
+  </a>
+
+  <a href="section10.html" class="chapter-card">
+    <span class="chapter-num">第十品</span>
+    <span class="chapter-zh">菩萨问明品</span>
+  </a>
+
+  <a href="section11.html" class="chapter-card">
+    <span class="chapter-num">第十一品</span>
+    <span class="chapter-zh">净行品</span>
+  </a>
+
+  <a href="section12.html" class="chapter-card">
+    <span class="chapter-num">第十二品</span>
+    <span class="chapter-zh">贤首品</span>
+  </a>
+
+  <a href="section13.html" class="chapter-card">
+    <span class="chapter-num">第十三品</span>
+    <span class="chapter-zh">升须弥山顶品</span>
+  </a>
+
+  <a href="section14.html" class="chapter-card">
+    <span class="chapter-num">第十四品</span>
+    <span class="chapter-zh">须弥顶上偈赞品</span>
+  </a>
+
+  <a href="section15.html" class="chapter-card">
+    <span class="chapter-num">第十五品</span>
+    <span class="chapter-zh">十住品</span>
+  </a>
+
+  <a href="section16.html" class="chapter-card">
+    <span class="chapter-num">第十六品</span>
+    <span class="chapter-zh">梵行品</span>
+  </a>
+
+  <a href="section17.html" class="chapter-card">
+    <span class="chapter-num">第十七品</span>
+    <span class="chapter-zh">初发心功德品</span>
+  </a>
+
+  <a href="section18.html" class="chapter-card">
+    <span class="chapter-num">第十八品</span>
+    <span class="chapter-zh">明法品</span>
+  </a>
+
+  <a href="section19.html" class="chapter-card">
+    <span class="chapter-num">第十九品</span>
+    <span class="chapter-zh">升夜摩天宫品</span>
+  </a>
+
+  <a href="section20.html" class="chapter-card">
+    <span class="chapter-num">第二十品</span>
+    <span class="chapter-zh">夜摩宫中偈赞品</span>
+  </a>
+
+  <a href="section21.html" class="chapter-card">
+    <span class="chapter-num">第二十一品</span>
+    <span class="chapter-zh">十行品</span>
+  </a>
+
+  <a href="section22.html" class="chapter-card">
+    <span class="chapter-num">第二十二品</span>
+    <span class="chapter-zh">十无尽藏品</span>
+  </a>
+
+  <a href="section23.html" class="chapter-card">
+    <span class="chapter-num">第二十三品</span>
+    <span class="chapter-zh">升兜率天宫品</span>
+  </a>
+
+  <a href="section24.html" class="chapter-card">
+    <span class="chapter-num">第二十四品</span>
+    <span class="chapter-zh">兜率宫中偈赞品</span>
+  </a>
+
+  <a href="section25.html" class="chapter-card">
+    <span class="chapter-num">第二十五品</span>
+    <span class="chapter-zh">十回向品</span>
+  </a>
+
+  <a href="section26.html" class="chapter-card">
+    <span class="chapter-num">第二十六品</span>
+    <span class="chapter-zh">十地品</span>
+  </a>
+
+  <a href="section27.html" class="chapter-card">
+    <span class="chapter-num">第二十七品</span>
+    <span class="chapter-zh">十定品</span>
+  </a>
+
+  <a href="section28.html" class="chapter-card">
+    <span class="chapter-num">第二十八品</span>
+    <span class="chapter-zh">十通品</span>
+  </a>
+
+  <a href="section29.html" class="chapter-card">
+    <span class="chapter-num">第二十九品</span>
+    <span class="chapter-zh">十忍品</span>
+  </a>
+
+  <a href="section30.html" class="chapter-card">
+    <span class="chapter-num">第三十品</span>
+    <span class="chapter-zh">阿僧祇品</span>
+  </a>
+
+  <a href="section31.html" class="chapter-card">
+    <span class="chapter-num">第三十一品</span>
+    <span class="chapter-zh">如来寿量品</span>
+  </a>
+
+  <a href="section32.html" class="chapter-card">
+    <span class="chapter-num">第三十二品</span>
+    <span class="chapter-zh">诸菩萨住处品</span>
+  </a>
+
+  <a href="section33.html" class="chapter-card">
+    <span class="chapter-num">第三十三品</span>
+    <span class="chapter-zh">佛不思议法品</span>
+  </a>
+
+  <a href="section34.html" class="chapter-card">
+    <span class="chapter-num">第三十四品</span>
+    <span class="chapter-zh">如来十身相海品</span>
+  </a>
+
+  <a href="section35.html" class="chapter-card">
+    <span class="chapter-num">第三十五品</span>
+    <span class="chapter-zh">如来随好光明功德品</span>
+  </a>
+
+  <a href="section36.html" class="chapter-card">
+    <span class="chapter-num">第三十六品</span>
+    <span class="chapter-zh">普贤行品</span>
+  </a>
+
+  <a href="section37.html" class="chapter-card">
+    <span class="chapter-num">第三十七品</span>
+    <span class="chapter-zh">如来出现品</span>
+  </a>
+
+  <a href="section38.html" class="chapter-card">
+    <span class="chapter-num">第三十八品</span>
+    <span class="chapter-zh">离世间品</span>
+  </a>
+
+  <a href="section39.html" class="chapter-card">
+    <span class="chapter-num">第三十九品</span>
+    <span class="chapter-zh">入法界品</span>
+  </a>
+
+</main>
+
+<footer class="site-footer">
+  <a href="https://lugh3456.github.io/DharmaGate/" class="footer-portal-link">The Dharma Gate · 法门无量</a>
+  <p>&copy; 2026 Avatamsaka Sutra Study</p>
+</footer>
+
+</body>
+</html>
