@@ -1,8 +1,8 @@
 # AI Context — Avatamsaka Sutra (Huayan Sutra) Mini Site
 
 **Project:** Avatamsaka Sutra (大方广佛华严经) interactive reading site
-**Status:** Complete — All 39 chapters done
-**Last updated:** 2026-04-18
+**Status:** Complete — All 80 scrolls generated and audited
+**Last updated:** 2026-05-06
 **Part of:** DharmaGate portal (https://lugh3456.github.io/DharmaGate/)
 **Live URL:** https://lugh3456.github.io/HuayanSutra/
 **GitHub repo:** HuayanSutra
@@ -11,17 +11,16 @@
 
 ## Purpose
 
-This site makes the Avatamsaka Sutra accessible for CK's personal study. Each chapter has:
-- Chinese sutra text with TTS playback
-- Chinese explanations (always visible)
-- English explanations (toggled, hidden by default)
-- Bilingual summary
+This site makes the Avatamsaka Sutra accessible for CK's personal study. Each scroll page has:
+- Full Chinese sutra text for that scroll, with TTS playback
+- 6 curated explanation cards (Chinese always visible, English toggled)
+- Bilingual summary (Chinese + English toggle)
 
 ---
 
 ## Design system
 
-All styling comes from `css/style.css`, copied verbatim from LotusSutra (which in turn came from DiamondSutra). Key tokens:
+All styling comes from `style.css` in the project root. Key tokens:
 
 ```css
 --red: #b83232
@@ -35,74 +34,104 @@ Fonts: Noto Serif SC (headings, body Chinese), Noto Sans SC (UI labels), loaded 
 
 ---
 
-## Page structure (all section pages)
+## File naming convention
 
-Every `sectionN.html` follows this exact pattern:
+The site uses **scroll-based** HTML files, not one-per-chapter. Files are named `sectionXy.html` where X is the chapter number and y is a letter distinguishing scrolls within the same chapter:
+
+- `section1a.html` → Scroll 1 (Ch 1, part a)
+- `section1b.html` → Scroll 2 (Ch 1, part b)
+- … 
+- `section39u.html` → Scroll 80 (Ch 39, part u)
+
+Total: **80 HTML files** covering 39 chapters, 80 scrolls.
+
+### SEQUENCE (navigation order, scrolls 1–80)
 
 ```
-portal-bar → header (h1 + nav) → main:
-  full-text section (Chinese text + TTS button)
-  line-explanation section (4 × explanation-card)
-  summary section (Chinese + English toggle)
+section1a, section1b, section1c, section1d, section1e,
+section2a, section3a,
+section5a, section5b, section5c,
+section6a, section7a, section9a, section11a, section12a,
+section13a, section16a, section18a, section19a, section21a,
+section22a, section23a, section24a,
+section25a–section25j (10 scrolls),
+section26a–section26f (6 scrolls),
+section27a–section27d (4 scrolls),
+section28a, section30a,
+section33a, section33b, section34a, section36a,
+section37a, section37b, section37c,
+section38a–section38g (7 scrolls),
+section39a–section39u (21 scrolls)
+```
+
+Note: chapter numbers 4, 8, 10, 14, 15, 17, 20, 25 (solo), 29, 31, 32, 35 are combined into adjacent scroll files (e.g., Ch 3+4 → section3a, Ch 7+8 → section7a).
+
+---
+
+## Page structure (all scroll pages)
+
+Every `sectionXy.html` follows this exact pattern:
+
+```
+portal-bar → header (h1 + nav.section-nav) → main:
+  <section class="full-text">  (Chinese text + TTS button)
+  <section class="line-explanation">  (6 × explanation-card)
+  <section class="summary">  (Chinese + English bilingual summary)
 footer
 ```
 
-JavaScript: `toggleDetail()` for show/hide English, `speak()` for TTS.
+JavaScript: `toggleDetail()` for show/hide English, `speak()` for TTS targeting zh-CN voice.
 
 ---
 
 ## Navigation pattern
 
-- Section 1: no ← prev link (only → Contents and next)
-- Sections 2–38: ← prev | Contents | next →
-- Section 39 (final chapter): no → next link (end of sutra)
-- As each batch of 6 is added, update the previous last chapter's header nav to add the → next link
+- First page (section1a): no ← prev link
+- Middle pages: ← prev | 目录 | next →
+- Last page (section39u): no → next link
+- Links use filenames: e.g. `href="section1b.html"`
 
 ---
 
-## Chapter list (80-roll Śikṣānanda version, 39 chapters)
+## Build system
 
-| File | Chapter | Title | Status |
-|------|---------|-------|--------|
-| section1.html | Ch 1 | 世主妙严品 | ✅ Done |
-| section2.html | Ch 2 | 如来现相品 | ✅ Done |
-| section3.html | Ch 3 | 普贤三昧品 | ✅ Done |
-| section4.html | Ch 4 | 世界成就品 | ✅ Done |
-| section5.html | Ch 5 | 华藏世界品 | ✅ Done |
-| section6.html | Ch 6 | 毗卢遮那品 | ✅ Done |
-| section7.html | Ch 7 | 如来名号品 | ✅ Done |
-| section8.html | Ch 8 | 四圣谛品 | ✅ Done |
-| section9.html | Ch 9 | 光明觉品 | ✅ Done |
-| section10.html | Ch 10 | 菩萨问明品 | ✅ Done |
-| section11.html | Ch 11 | 净行品 | ✅ Done |
-| section12.html | Ch 12 | 贤首品 | ✅ Done |
-| section13.html | Ch 13 | 升须弥山顶品 | ✅ Done |
-| section14.html | Ch 14 | 须弥顶上偈赞品 | ✅ Done |
-| section15.html | Ch 15 | 十住品 | ✅ Done |
-| section16.html | Ch 16 | 梵行品 | ✅ Done |
-| section17.html | Ch 17 | 初发心功德品 | ✅ Done |
-| section18.html | Ch 18 | 明法品 | ✅ Done |
-| section19.html | Ch 19 | 升夜摩天宫品 | ✅ Done |
-| section20.html | Ch 20 | 夜摩宫中偈赞品 | ✅ Done |
-| section21.html | Ch 21 | 十行品 | ✅ Done |
-| section22.html | Ch 22 | 十无尽藏品 | ✅ Done |
-| section23.html | Ch 23 | 升兜率天宫品 | ✅ Done |
-| section24.html | Ch 24 | 兜率宫中偈赞品 | ✅ Done |
-| section25.html | Ch 25 | 十回向品 | ✅ Done |
-| section26.html | Ch 26 | 十地品 | ✅ Done |
-| section27.html | Ch 27 | 十定品 | ✅ Done |
-| section28.html | Ch 28 | 十通品 | ✅ Done |
-| section29.html | Ch 29 | 十忍品 | ✅ Done |
-| section30.html | Ch 30 | 阿僧祇品 | ✅ Done |
-| section31.html | Ch 31 | 如来寿量品 | ✅ Done |
-| section32.html | Ch 32 | 诸菩萨住处品 | ✅ Done |
-| section33.html | Ch 33 | 佛不思议法品 | ✅ Done |
-| section34.html | Ch 34 | 如来十身相海品 | ✅ Done |
-| section35.html | Ch 35 | 如来随好光明功德品 | ✅ Done |
-| section36.html | Ch 36 | 普贤行品 | ✅ Done |
-| section37.html | Ch 37 | 如来出现品 | ✅ Done |
-| section38.html | Ch 38 | 离世间品 | ✅ Done |
-| section39.html | Ch 39 | 入法界品 | ✅ Done |
+All 80 pages are generated by `outputs/generate_scrolls.py`. **Do not edit HTML files by hand** — regenerate from the script instead.
+
+The script reads from:
+- `source/scrolls/scroll_NN.md` — authoritative Chinese source text (80 files)
+- Embedded `DATA` dict — 6 explanation card tuples + bilingual summary per scroll
+
+To regenerate all pages:
+```bash
+python3 generate_scrolls.py
+```
+
+Key data structures in `generate_scrolls.py`:
+- `SEQUENCE` — list of 80 section IDs in navigation order
+- `FILE_TO_SCROLL` — maps section ID → scroll number (1–80)
+- `FILE_TO_H1` — maps section ID → display heading (卷第X · 第Y品 · 章名)
+- `DATA` — dict keyed by section ID with `"cards"` (list of 6 tuples) and `"summary_zh"` / `"summary_en"`
+
+Card tuple format: `("phrase_zh", "explanation_zh", "phrase_en", "explanation_en")`
+
+**Recurring syntax trap:** The last card tuple in each DATA section must end with `"),` (closing the tuple) not `",` (which leaves the tuple unclosed). This causes a SyntaxError at runtime.
+
+---
+
+## Audit system
+
+Two audit scripts live in `outputs/` (patched copies) or can be run from the skill:
+
+```bash
+python3 /tmp/ac2.py /path/to/HuayanSutra   # content audit
+python3 /tmp/cs2.py /path/to/HuayanSutra   # structure audit
+```
+
+Config: `docs/audit-config.json` — uses `pages.files` list (non-sequential filenames).
+Reference: `docs/reference.py` — `HUAYAN = {1: "<scroll 1 text>", ..., 80: "<scroll 80 text>"}`.
+`check_annotation_coverage` is set to `false` (intentionally sparse: 6 cards per scroll, not one per line).
+
+Last audit result: **✓ All 80 pages pass content and structure checks** (2026-05-06).
 
 ---
 
@@ -110,26 +139,18 @@ JavaScript: `toggleDetail()` for show/hide English, `speak()` for TTS.
 
 - CSS design tokens (matches LotusSutra / DiamondSutra exactly)
 - English toggle pattern (hidden by default, JS-driven)
-- TTS voice preference (Ting-Ting, zh-CN, rate 0.9)
+- TTS voice preference (zh-CN, rate 0.9)
 - Portal bar link (always points to DharmaGate)
 - Footer copyright line
 
 ---
 
-## Workflow for adding each batch of 6 chapters
-
-1. Write section7.html through section12.html (or next batch) with full content
-2. Update the previous last chapter's header nav to add → next link
-3. Update index.html: change the next 6 cards from `<div class="chapter-card coming">` to `<a href="sectionN.html" class="chapter-card">` (remove coming-label)
-4. Update this ai-context.md: mark new chapters ✅ Done, shift ⏳ Next to the next batch
-5. After CK reviews locally: push to GitHub
-
----
-
 ## Common tasks
 
-**Add a new batch of chapters:** Follow the workflow above.
+**Regenerate all pages after editing DATA:** Run `python3 generate_scrolls.py` from the `outputs/` directory.
 
-**Fix a navigation link:** Each section has ← prev, 目录 Contents, next → links in `<nav class="section-nav">`. First and last built chapters have partial nav.
+**Fix a navigation link:** Each section has ← prev, 目录 Contents, next → links in `<nav class="section-nav">`. Modify `generate_scrolls.py` and regenerate.
+
+**Run audit before pushing:** Run both audit scripts; both must report zero issues.
 
 **Deploy:** Push to GitHub. Pages auto-deploys from the repo root.
