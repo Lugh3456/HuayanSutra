@@ -1,0 +1,48 @@
+{
+  "site_name": "Huayan Sutra — 华严经",
+  "language": "zh",
+  "pages": {
+    "files": [
+      "section1a.html", "section1b.html", "section1c.html", "section1d.html", "section1e.html",
+      "section2a.html", "section3a.html",
+      "section5a.html", "section5b.html", "section5c.html",
+      "section6a.html", "section7a.html", "section9a.html", "section11a.html", "section12a.html",
+      "section13a.html", "section16a.html", "section18a.html", "section19a.html", "section21a.html",
+      "section22a.html", "section23a.html", "section24a.html",
+      "section25a.html", "section25b.html", "section25c.html", "section25d.html", "section25e.html",
+      "section25f.html", "section25g.html", "section25h.html", "section25i.html", "section25j.html",
+      "section26a.html", "section26b.html", "section26c.html", "section26d.html", "section26e.html", "section26f.html",
+      "section27a.html", "section27b.html", "section27c.html", "section27d.html",
+      "section28a.html", "section30a.html",
+      "section33a.html", "section33b.html", "section34a.html", "section36a.html",
+      "section37a.html", "section37b.html", "section37c.html",
+      "section38a.html", "section38b.html", "section38c.html", "section38d.html",
+      "section38e.html", "section38f.html", "section38g.html",
+      "section39a.html", "section39b.html", "section39c.html", "section39d.html", "section39e.html",
+      "section39f.html", "section39g.html", "section39h.html", "section39i.html", "section39j.html",
+      "section39k.html", "section39l.html", "section39m.html", "section39n.html", "section39o.html",
+      "section39p.html", "section39q.html", "section39r.html", "section39s.html", "section39t.html",
+      "section39u.html"
+    ],
+    "count": 80,
+    "label": "卷",
+    "check_title_h1": false
+  },
+  "content": {
+    "source_text_id": "chineseText",
+    "explanation_section_class": "line-explanation",
+    "explanation_card_class": "explanation-card",
+    "card_line_selector": "p.line",
+    "line_split_punctuation": "。？！；",
+    "reference_file": "reference.py",
+    "reference_variable": "HUAYAN",
+    "check_annotation_coverage": false
+  },
+  "structure": {
+    "required_sections": ["full-text", "line-explanation", "summary"],
+    "required_elements": ["portal-bar", "site-footer", "skip-link"],
+    "required_scripts": ["speechSynthesis"],
+    "required_links": ["style.css", "index.html"],
+    "html_lang": "zh"
+  }
+}
