@@ -1,75 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Read and study the Avatamsaka Sutra (Huayan Sutra) — one of Mahayana Buddhism's grandest texts — chapter by chapter with line-by-line explanation in English and Chinese.">
-  <title>Avatamsaka Sutra | 大方广佛华严经</title>
+  <meta name="description" content="逐卷研读大方广佛华严经 — 80卷全文，逐句解释，中英双语。Read the Avatamsaka Sutra scroll by scroll with bilingual commentary.">
+  <title>华严经 | Avatamsaka Sutra</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    /* ── Chapter grid (39 cards, compact) ── */
-    .chapter-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 0.75rem;
+    /* ── Chapter list ── */
+    .chapter-list {
       max-width: 960px;
-      margin: 1.5rem auto 3.5rem;
+      margin: 0 auto 3.5rem;
       padding: 0 1.5rem;
     }
 
-    .chapter-card {
+    .chapter-block {
+      margin-bottom: 2rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .chapter-block:last-child {
+      border-bottom: none;
+    }
+
+    .chapter-header {
       display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      padding: 1rem 1rem 0.9rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      text-decoration: none;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      align-items: baseline;
+      gap: 0.65rem;
+      margin-bottom: 0.65rem;
     }
 
-    .chapter-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.09);
-      border-color: var(--red);
-    }
-
-    .chapter-card.coming {
-      opacity: 0.5;
-      cursor: default;
-      pointer-events: none;
-    }
-
-    .chapter-num {
+    .ch-num {
       font-size: 0.72rem;
       color: var(--saffron);
       letter-spacing: 0.1em;
       font-family: "Noto Sans SC", sans-serif;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    .chapter-zh {
+    .ch-name {
       font-family: "Noto Serif SC", serif;
-      font-size: 0.97rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      color: var(--ink);
+      color: var(--text);
+      margin: 0;
       line-height: 1.3;
     }
 
-    .coming-label {
-      font-size: 0.68rem;
+    /* ── Scroll cards ── */
+    .scroll-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .scroll-card {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.38rem 0.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-family: "Noto Sans SC", sans-serif;
       color: var(--muted);
-      letter-spacing: 0.08em;
-      margin-top: 0.15rem;
+      transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .scroll-card:hover {
+      border-color: var(--red);
+      color: var(--red);
+      background: var(--bg);
+    }
+
+    .scroll-card .vol {
+      font-size: 0.65rem;
+      opacity: 0.7;
+      margin-right: 0.25rem;
     }
 
     @media (max-width: 600px) {
-      .chapter-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .chapter-list {
         padding: 0 1rem;
+      }
+      .ch-name {
+        font-size: 0.97rem;
       }
     }
   </style>
@@ -83,226 +105,516 @@
 </div>
 
 <header class="site-header">
-  <h1>Avatamsaka Sutra</h1>
+  <h1>华严经</h1>
   <p class="header-zh">大方广佛华严经</p>
-  <p class="header-tradition">Mahayana · 大乘 · Huayan</p>
+  <p class="header-tradition">唐 · 实叉难陀译 · 八十卷</p>
 </header>
 
 <section class="intro">
   <p>
-    The Avatamsaka Sutra — the Flower Garland Scripture — is the grandest of all Buddhist sutras.
-    Spoken by Vairocana Buddha immediately after his enlightenment under the Bodhi Tree, it describes
-    the cosmos as an infinite web of interdependence, symbolised by <em>Indra's Net (因陀罗网)</em>:
-    a net of jewels in which every jewel perfectly reflects every other. Its central revelation is
-    that all phenomena interpenetrate without obstruction — <em>事事无碍</em> — and that the entire
-    universe is the body of the Buddha.
+    华严经是大乘佛教最宏博的经典，毗卢遮那佛于菩提树下成道后直示法界实相：一切万法相互含摄、重重无尽，如因陀罗网，珠珠相映。其核心旨趣是<em>事事无碍</em>——宇宙万象皆是佛身，一微尘中含三千大千世界。
+  </p>
+  <p>
+    The Avatamsaka Sutra is the grandest scripture in the Mahayana tradition. Spoken by Vairocana Buddha immediately after his enlightenment, it reveals the cosmos as <em>Indra's Net</em> — an infinite web of interdependent jewels, each perfectly reflecting every other. Its central teaching is <em>事事无碍</em>: all phenomena interpenetrate without obstruction, and the entire universe is the body of the Buddha.
+  </p>
+  <p style="font-size:0.85rem; color:var(--muted); margin-top:0.5rem;">
+    本站依八十卷本编排，按品目检索，每卷独立成页，含原文、逐句释义与中英双语总结。
   </p>
 </section>
 
-<main class="chapter-grid" id="main-content">
+<main id="main-content">
+<div class="chapter-list">
 
-  <!-- Chapters 1–6: live -->
-  <a href="section1.html" class="chapter-card">
-    <span class="chapter-num">第一品</span>
-    <span class="chapter-zh">世主妙严品</span>
-  </a>
+  <!-- ─── 第一品 世主妙严品 · 卷 1–5 ─── -->
+  <div class="chapter-block" id="ch01">
+    <div class="chapter-header">
+      <span class="ch-num">第一品</span>
+      <h2 class="ch-name">世主妙严品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section1a.html" class="scroll-card"><span class="vol">卷</span>1</a>
+      <a href="section1b.html" class="scroll-card"><span class="vol">卷</span>2</a>
+      <a href="section1c.html" class="scroll-card"><span class="vol">卷</span>3</a>
+      <a href="section1d.html" class="scroll-card"><span class="vol">卷</span>4</a>
+      <a href="section1e.html" class="scroll-card"><span class="vol">卷</span>5</a>
+    </div>
+  </div>
 
-  <a href="section2.html" class="chapter-card">
-    <span class="chapter-num">第二品</span>
-    <span class="chapter-zh">如来现相品</span>
-  </a>
+  <!-- ─── 第二品 如来现相品 · 卷 6 ─── -->
+  <div class="chapter-block" id="ch02">
+    <div class="chapter-header">
+      <span class="ch-num">第二品</span>
+      <h2 class="ch-name">如来现相品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section2a.html" class="scroll-card"><span class="vol">卷</span>6</a>
+    </div>
+  </div>
 
-  <a href="section3.html" class="chapter-card">
-    <span class="chapter-num">第三品</span>
-    <span class="chapter-zh">普贤三昧品</span>
-  </a>
+  <!-- ─── 第三品 普贤三昧品 · 卷 7（含第四品） ─── -->
+  <div class="chapter-block" id="ch03">
+    <div class="chapter-header">
+      <span class="ch-num">第三品</span>
+      <h2 class="ch-name">普贤三昧品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section3a.html" class="scroll-card"><span class="vol">卷</span>7</a>
+    </div>
+  </div>
 
-  <a href="section4.html" class="chapter-card">
-    <span class="chapter-num">第四品</span>
-    <span class="chapter-zh">世界成就品</span>
-  </a>
+  <!-- ─── 第四品 世界成就品 · 卷 7（含第三品） ─── -->
+  <div class="chapter-block" id="ch04">
+    <div class="chapter-header">
+      <span class="ch-num">第四品</span>
+      <h2 class="ch-name">世界成就品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section3a.html" class="scroll-card"><span class="vol">卷</span>7</a>
+    </div>
+  </div>
 
-  <a href="section5.html" class="chapter-card">
-    <span class="chapter-num">第五品</span>
-    <span class="chapter-zh">华藏世界品</span>
-  </a>
+  <!-- ─── 第五品 华藏世界品 · 卷 8–10 ─── -->
+  <div class="chapter-block" id="ch05">
+    <div class="chapter-header">
+      <span class="ch-num">第五品</span>
+      <h2 class="ch-name">华藏世界品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section5a.html" class="scroll-card"><span class="vol">卷</span>8</a>
+      <a href="section5b.html" class="scroll-card"><span class="vol">卷</span>9</a>
+      <a href="section5c.html" class="scroll-card"><span class="vol">卷</span>10</a>
+    </div>
+  </div>
 
-  <a href="section6.html" class="chapter-card">
-    <span class="chapter-num">第六品</span>
-    <span class="chapter-zh">毗卢遮那品</span>
-  </a>
+  <!-- ─── 第六品 毗卢遮那品 · 卷 11 ─── -->
+  <div class="chapter-block" id="ch06">
+    <div class="chapter-header">
+      <span class="ch-num">第六品</span>
+      <h2 class="ch-name">毗卢遮那品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section6a.html" class="scroll-card"><span class="vol">卷</span>11</a>
+    </div>
+  </div>
 
-  <!-- Chapters 7–39: coming soon -->
-  <a href="section7.html" class="chapter-card">
-    <span class="chapter-num">第七品</span>
-    <span class="chapter-zh">如来名号品</span>
-  </a>
+  <!-- ─── 第七品 如来名号品 · 卷 12（含第八品） ─── -->
+  <div class="chapter-block" id="ch07">
+    <div class="chapter-header">
+      <span class="ch-num">第七品</span>
+      <h2 class="ch-name">如来名号品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section7a.html" class="scroll-card"><span class="vol">卷</span>12</a>
+    </div>
+  </div>
 
-  <a href="section8.html" class="chapter-card">
-    <span class="chapter-num">第八品</span>
-    <span class="chapter-zh">四圣谛品</span>
-  </a>
+  <!-- ─── 第八品 四圣谛品 · 卷 12（含第七品） ─── -->
+  <div class="chapter-block" id="ch08">
+    <div class="chapter-header">
+      <span class="ch-num">第八品</span>
+      <h2 class="ch-name">四圣谛品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section7a.html" class="scroll-card"><span class="vol">卷</span>12</a>
+    </div>
+  </div>
 
-  <a href="section9.html" class="chapter-card">
-    <span class="chapter-num">第九品</span>
-    <span class="chapter-zh">光明觉品</span>
-  </a>
+  <!-- ─── 第九品 光明觉品 · 卷 13（含第十品） ─── -->
+  <div class="chapter-block" id="ch09">
+    <div class="chapter-header">
+      <span class="ch-num">第九品</span>
+      <h2 class="ch-name">光明觉品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section9a.html" class="scroll-card"><span class="vol">卷</span>13</a>
+    </div>
+  </div>
 
-  <a href="section10.html" class="chapter-card">
-    <span class="chapter-num">第十品</span>
-    <span class="chapter-zh">菩萨问明品</span>
-  </a>
+  <!-- ─── 第十品 菩萨问明品 · 卷 13（含第九品） ─── -->
+  <div class="chapter-block" id="ch10">
+    <div class="chapter-header">
+      <span class="ch-num">第十品</span>
+      <h2 class="ch-name">菩萨问明品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section9a.html" class="scroll-card"><span class="vol">卷</span>13</a>
+    </div>
+  </div>
 
-  <a href="section11.html" class="chapter-card">
-    <span class="chapter-num">第十一品</span>
-    <span class="chapter-zh">净行品</span>
-  </a>
+  <!-- ─── 第十一品 净行品 · 卷 14 ─── -->
+  <div class="chapter-block" id="ch11">
+    <div class="chapter-header">
+      <span class="ch-num">第十一品</span>
+      <h2 class="ch-name">净行品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section11a.html" class="scroll-card"><span class="vol">卷</span>14</a>
+    </div>
+  </div>
 
-  <a href="section12.html" class="chapter-card">
-    <span class="chapter-num">第十二品</span>
-    <span class="chapter-zh">贤首品</span>
-  </a>
+  <!-- ─── 第十二品 贤首品 · 卷 14–15 ─── -->
+  <div class="chapter-block" id="ch12">
+    <div class="chapter-header">
+      <span class="ch-num">第十二品</span>
+      <h2 class="ch-name">贤首品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section11a.html" class="scroll-card"><span class="vol">卷</span>14</a>
+      <a href="section12a.html" class="scroll-card"><span class="vol">卷</span>15</a>
+    </div>
+  </div>
 
-  <a href="section13.html" class="chapter-card">
-    <span class="chapter-num">第十三品</span>
-    <span class="chapter-zh">升须弥山顶品</span>
-  </a>
+  <!-- ─── 第十三品 升须弥山顶品 · 卷 16（含第十四、十五品） ─── -->
+  <div class="chapter-block" id="ch13">
+    <div class="chapter-header">
+      <span class="ch-num">第十三品</span>
+      <h2 class="ch-name">升须弥山顶品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section13a.html" class="scroll-card"><span class="vol">卷</span>16</a>
+    </div>
+  </div>
 
-  <a href="section14.html" class="chapter-card">
-    <span class="chapter-num">第十四品</span>
-    <span class="chapter-zh">须弥顶上偈赞品</span>
-  </a>
+  <!-- ─── 第十四品 须弥顶上偈赞品 · 卷 16（含第十三、十五品） ─── -->
+  <div class="chapter-block" id="ch14">
+    <div class="chapter-header">
+      <span class="ch-num">第十四品</span>
+      <h2 class="ch-name">须弥顶上偈赞品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section13a.html" class="scroll-card"><span class="vol">卷</span>16</a>
+    </div>
+  </div>
 
-  <a href="section15.html" class="chapter-card">
-    <span class="chapter-num">第十五品</span>
-    <span class="chapter-zh">十住品</span>
-  </a>
+  <!-- ─── 第十五品 十住品 · 卷 16（含第十三、十四品） ─── -->
+  <div class="chapter-block" id="ch15">
+    <div class="chapter-header">
+      <span class="ch-num">第十五品</span>
+      <h2 class="ch-name">十住品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section13a.html" class="scroll-card"><span class="vol">卷</span>16</a>
+    </div>
+  </div>
 
-  <a href="section16.html" class="chapter-card">
-    <span class="chapter-num">第十六品</span>
-    <span class="chapter-zh">梵行品</span>
-  </a>
+  <!-- ─── 第十六品 梵行品 · 卷 17（含第十七品） ─── -->
+  <div class="chapter-block" id="ch16">
+    <div class="chapter-header">
+      <span class="ch-num">第十六品</span>
+      <h2 class="ch-name">梵行品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section16a.html" class="scroll-card"><span class="vol">卷</span>17</a>
+    </div>
+  </div>
 
-  <a href="section17.html" class="chapter-card">
-    <span class="chapter-num">第十七品</span>
-    <span class="chapter-zh">初发心功德品</span>
-  </a>
+  <!-- ─── 第十七品 初发心功德品 · 卷 17（含第十六品） ─── -->
+  <div class="chapter-block" id="ch17">
+    <div class="chapter-header">
+      <span class="ch-num">第十七品</span>
+      <h2 class="ch-name">初发心功德品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section16a.html" class="scroll-card"><span class="vol">卷</span>17</a>
+    </div>
+  </div>
 
-  <a href="section18.html" class="chapter-card">
-    <span class="chapter-num">第十八品</span>
-    <span class="chapter-zh">明法品</span>
-  </a>
+  <!-- ─── 第十八品 明法品 · 卷 18 ─── -->
+  <div class="chapter-block" id="ch18">
+    <div class="chapter-header">
+      <span class="ch-num">第十八品</span>
+      <h2 class="ch-name">明法品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section18a.html" class="scroll-card"><span class="vol">卷</span>18</a>
+    </div>
+  </div>
 
-  <a href="section19.html" class="chapter-card">
-    <span class="chapter-num">第十九品</span>
-    <span class="chapter-zh">升夜摩天宫品</span>
-  </a>
+  <!-- ─── 第十九品 升夜摩天宫品 · 卷 19（含第二十、二十一品初） ─── -->
+  <div class="chapter-block" id="ch19">
+    <div class="chapter-header">
+      <span class="ch-num">第十九品</span>
+      <h2 class="ch-name">升夜摩天宫品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section19a.html" class="scroll-card"><span class="vol">卷</span>19</a>
+    </div>
+  </div>
 
-  <a href="section20.html" class="chapter-card">
-    <span class="chapter-num">第二十品</span>
-    <span class="chapter-zh">夜摩宫中偈赞品</span>
-  </a>
+  <!-- ─── 第二十品 夜摩宫中偈赞品 · 卷 19（含第十九品） ─── -->
+  <div class="chapter-block" id="ch20">
+    <div class="chapter-header">
+      <span class="ch-num">第二十品</span>
+      <h2 class="ch-name">夜摩宫中偈赞品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section19a.html" class="scroll-card"><span class="vol">卷</span>19</a>
+    </div>
+  </div>
 
-  <a href="section21.html" class="chapter-card">
-    <span class="chapter-num">第二十一品</span>
-    <span class="chapter-zh">十行品</span>
-  </a>
+  <!-- ─── 第二十一品 十行品 · 卷 19–20 ─── -->
+  <div class="chapter-block" id="ch21">
+    <div class="chapter-header">
+      <span class="ch-num">第二十一品</span>
+      <h2 class="ch-name">十行品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section19a.html" class="scroll-card"><span class="vol">卷</span>19</a>
+      <a href="section21a.html" class="scroll-card"><span class="vol">卷</span>20</a>
+    </div>
+  </div>
 
-  <a href="section22.html" class="chapter-card">
-    <span class="chapter-num">第二十二品</span>
-    <span class="chapter-zh">十无尽藏品</span>
-  </a>
+  <!-- ─── 第二十二品 十无尽藏品 · 卷 21 ─── -->
+  <div class="chapter-block" id="ch22">
+    <div class="chapter-header">
+      <span class="ch-num">第二十二品</span>
+      <h2 class="ch-name">十无尽藏品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section22a.html" class="scroll-card"><span class="vol">卷</span>21</a>
+    </div>
+  </div>
 
-  <a href="section23.html" class="chapter-card">
-    <span class="chapter-num">第二十三品</span>
-    <span class="chapter-zh">升兜率天宫品</span>
-  </a>
+  <!-- ─── 第二十三品 升兜率天宫品 · 卷 22 ─── -->
+  <div class="chapter-block" id="ch23">
+    <div class="chapter-header">
+      <span class="ch-num">第二十三品</span>
+      <h2 class="ch-name">升兜率天宫品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section23a.html" class="scroll-card"><span class="vol">卷</span>22</a>
+    </div>
+  </div>
 
-  <a href="section24.html" class="chapter-card">
-    <span class="chapter-num">第二十四品</span>
-    <span class="chapter-zh">兜率宫中偈赞品</span>
-  </a>
+  <!-- ─── 第二十四品 兜率宫中偈赞品 · 卷 23（含第二十五品初） ─── -->
+  <div class="chapter-block" id="ch24">
+    <div class="chapter-header">
+      <span class="ch-num">第二十四品</span>
+      <h2 class="ch-name">兜率宫中偈赞品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section24a.html" class="scroll-card"><span class="vol">卷</span>23</a>
+    </div>
+  </div>
 
-  <a href="section25.html" class="chapter-card">
-    <span class="chapter-num">第二十五品</span>
-    <span class="chapter-zh">十回向品</span>
-  </a>
+  <!-- ─── 第二十五品 十回向品 · 卷 23–33 ─── -->
+  <div class="chapter-block" id="ch25">
+    <div class="chapter-header">
+      <span class="ch-num">第二十五品</span>
+      <h2 class="ch-name">十回向品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section24a.html" class="scroll-card"><span class="vol">卷</span>23</a>
+      <a href="section25a.html" class="scroll-card"><span class="vol">卷</span>24</a>
+      <a href="section25b.html" class="scroll-card"><span class="vol">卷</span>25</a>
+      <a href="section25c.html" class="scroll-card"><span class="vol">卷</span>26</a>
+      <a href="section25d.html" class="scroll-card"><span class="vol">卷</span>27</a>
+      <a href="section25e.html" class="scroll-card"><span class="vol">卷</span>28</a>
+      <a href="section25f.html" class="scroll-card"><span class="vol">卷</span>29</a>
+      <a href="section25g.html" class="scroll-card"><span class="vol">卷</span>30</a>
+      <a href="section25h.html" class="scroll-card"><span class="vol">卷</span>31</a>
+      <a href="section25i.html" class="scroll-card"><span class="vol">卷</span>32</a>
+      <a href="section25j.html" class="scroll-card"><span class="vol">卷</span>33</a>
+    </div>
+  </div>
 
-  <a href="section26.html" class="chapter-card">
-    <span class="chapter-num">第二十六品</span>
-    <span class="chapter-zh">十地品</span>
-  </a>
+  <!-- ─── 第二十六品 十地品 · 卷 34–39 ─── -->
+  <div class="chapter-block" id="ch26">
+    <div class="chapter-header">
+      <span class="ch-num">第二十六品</span>
+      <h2 class="ch-name">十地品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section26a.html" class="scroll-card"><span class="vol">卷</span>34</a>
+      <a href="section26b.html" class="scroll-card"><span class="vol">卷</span>35</a>
+      <a href="section26c.html" class="scroll-card"><span class="vol">卷</span>36</a>
+      <a href="section26d.html" class="scroll-card"><span class="vol">卷</span>37</a>
+      <a href="section26e.html" class="scroll-card"><span class="vol">卷</span>38</a>
+      <a href="section26f.html" class="scroll-card"><span class="vol">卷</span>39</a>
+    </div>
+  </div>
 
-  <a href="section27.html" class="chapter-card">
-    <span class="chapter-num">第二十七品</span>
-    <span class="chapter-zh">十定品</span>
-  </a>
+  <!-- ─── 第二十七品 十定品 · 卷 40–43 ─── -->
+  <div class="chapter-block" id="ch27">
+    <div class="chapter-header">
+      <span class="ch-num">第二十七品</span>
+      <h2 class="ch-name">十定品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section27a.html" class="scroll-card"><span class="vol">卷</span>40</a>
+      <a href="section27b.html" class="scroll-card"><span class="vol">卷</span>41</a>
+      <a href="section27c.html" class="scroll-card"><span class="vol">卷</span>42</a>
+      <a href="section27d.html" class="scroll-card"><span class="vol">卷</span>43</a>
+    </div>
+  </div>
 
-  <a href="section28.html" class="chapter-card">
-    <span class="chapter-num">第二十八品</span>
-    <span class="chapter-zh">十通品</span>
-  </a>
+  <!-- ─── 第二十八品 十通品 · 卷 44（含第二十九品） ─── -->
+  <div class="chapter-block" id="ch28">
+    <div class="chapter-header">
+      <span class="ch-num">第二十八品</span>
+      <h2 class="ch-name">十通品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section28a.html" class="scroll-card"><span class="vol">卷</span>44</a>
+    </div>
+  </div>
 
-  <a href="section29.html" class="chapter-card">
-    <span class="chapter-num">第二十九品</span>
-    <span class="chapter-zh">十忍品</span>
-  </a>
+  <!-- ─── 第二十九品 十忍品 · 卷 44（含第二十八品） ─── -->
+  <div class="chapter-block" id="ch29">
+    <div class="chapter-header">
+      <span class="ch-num">第二十九品</span>
+      <h2 class="ch-name">十忍品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section28a.html" class="scroll-card"><span class="vol">卷</span>44</a>
+    </div>
+  </div>
 
-  <a href="section30.html" class="chapter-card">
-    <span class="chapter-num">第三十品</span>
-    <span class="chapter-zh">阿僧祇品</span>
-  </a>
+  <!-- ─── 第三十品 阿僧祇品 · 卷 45（含第三十一、三十二品） ─── -->
+  <div class="chapter-block" id="ch30">
+    <div class="chapter-header">
+      <span class="ch-num">第三十品</span>
+      <h2 class="ch-name">阿僧祇品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section30a.html" class="scroll-card"><span class="vol">卷</span>45</a>
+    </div>
+  </div>
 
-  <a href="section31.html" class="chapter-card">
-    <span class="chapter-num">第三十一品</span>
-    <span class="chapter-zh">如来寿量品</span>
-  </a>
+  <!-- ─── 第三十一品 如来寿量品 · 卷 45（含第三十、三十二品） ─── -->
+  <div class="chapter-block" id="ch31">
+    <div class="chapter-header">
+      <span class="ch-num">第三十一品</span>
+      <h2 class="ch-name">如来寿量品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section30a.html" class="scroll-card"><span class="vol">卷</span>45</a>
+    </div>
+  </div>
 
-  <a href="section32.html" class="chapter-card">
-    <span class="chapter-num">第三十二品</span>
-    <span class="chapter-zh">诸菩萨住处品</span>
-  </a>
+  <!-- ─── 第三十二品 诸菩萨住处品 · 卷 45（含第三十、三十一品） ─── -->
+  <div class="chapter-block" id="ch32">
+    <div class="chapter-header">
+      <span class="ch-num">第三十二品</span>
+      <h2 class="ch-name">诸菩萨住处品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section30a.html" class="scroll-card"><span class="vol">卷</span>45</a>
+    </div>
+  </div>
 
-  <a href="section33.html" class="chapter-card">
-    <span class="chapter-num">第三十三品</span>
-    <span class="chapter-zh">佛不思议法品</span>
-  </a>
+  <!-- ─── 第三十三品 佛不思议法品 · 卷 46–47 ─── -->
+  <div class="chapter-block" id="ch33">
+    <div class="chapter-header">
+      <span class="ch-num">第三十三品</span>
+      <h2 class="ch-name">佛不思议法品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section33a.html" class="scroll-card"><span class="vol">卷</span>46</a>
+      <a href="section33b.html" class="scroll-card"><span class="vol">卷</span>47</a>
+    </div>
+  </div>
 
-  <a href="section34.html" class="chapter-card">
-    <span class="chapter-num">第三十四品</span>
-    <span class="chapter-zh">如来十身相海品</span>
-  </a>
+  <!-- ─── 第三十四品 如来十身相海品 · 卷 48（含第三十五品） ─── -->
+  <div class="chapter-block" id="ch34">
+    <div class="chapter-header">
+      <span class="ch-num">第三十四品</span>
+      <h2 class="ch-name">如来十身相海品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section34a.html" class="scroll-card"><span class="vol">卷</span>48</a>
+    </div>
+  </div>
 
-  <a href="section35.html" class="chapter-card">
-    <span class="chapter-num">第三十五品</span>
-    <span class="chapter-zh">如来随好光明功德品</span>
-  </a>
+  <!-- ─── 第三十五品 如来随好光明功德品 · 卷 48（含第三十四品） ─── -->
+  <div class="chapter-block" id="ch35">
+    <div class="chapter-header">
+      <span class="ch-num">第三十五品</span>
+      <h2 class="ch-name">如来随好光明功德品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section34a.html" class="scroll-card"><span class="vol">卷</span>48</a>
+    </div>
+  </div>
 
-  <a href="section36.html" class="chapter-card">
-    <span class="chapter-num">第三十六品</span>
-    <span class="chapter-zh">普贤行品</span>
-  </a>
+  <!-- ─── 第三十六品 普贤行品 · 卷 49 ─── -->
+  <div class="chapter-block" id="ch36">
+    <div class="chapter-header">
+      <span class="ch-num">第三十六品</span>
+      <h2 class="ch-name">普贤行品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section36a.html" class="scroll-card"><span class="vol">卷</span>49</a>
+    </div>
+  </div>
 
-  <a href="section37.html" class="chapter-card">
-    <span class="chapter-num">第三十七品</span>
-    <span class="chapter-zh">如来出现品</span>
-  </a>
+  <!-- ─── 第三十七品 如来出现品 · 卷 50–52 ─── -->
+  <div class="chapter-block" id="ch37">
+    <div class="chapter-header">
+      <span class="ch-num">第三十七品</span>
+      <h2 class="ch-name">如来出现品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section37a.html" class="scroll-card"><span class="vol">卷</span>50</a>
+      <a href="section37b.html" class="scroll-card"><span class="vol">卷</span>51</a>
+      <a href="section37c.html" class="scroll-card"><span class="vol">卷</span>52</a>
+    </div>
+  </div>
 
-  <a href="section38.html" class="chapter-card">
-    <span class="chapter-num">第三十八品</span>
-    <span class="chapter-zh">离世间品</span>
-  </a>
+  <!-- ─── 第三十八品 离世间品 · 卷 53–59 ─── -->
+  <div class="chapter-block" id="ch38">
+    <div class="chapter-header">
+      <span class="ch-num">第三十八品</span>
+      <h2 class="ch-name">离世间品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section38a.html" class="scroll-card"><span class="vol">卷</span>53</a>
+      <a href="section38b.html" class="scroll-card"><span class="vol">卷</span>54</a>
+      <a href="section38c.html" class="scroll-card"><span class="vol">卷</span>55</a>
+      <a href="section38d.html" class="scroll-card"><span class="vol">卷</span>56</a>
+      <a href="section38e.html" class="scroll-card"><span class="vol">卷</span>57</a>
+      <a href="section38f.html" class="scroll-card"><span class="vol">卷</span>58</a>
+      <a href="section38g.html" class="scroll-card"><span class="vol">卷</span>59</a>
+    </div>
+  </div>
 
-  <a href="section39.html" class="chapter-card">
-    <span class="chapter-num">第三十九品</span>
-    <span class="chapter-zh">入法界品</span>
-  </a>
+  <!-- ─── 第三十九品 入法界品 · 卷 60–80 ─── -->
+  <div class="chapter-block" id="ch39">
+    <div class="chapter-header">
+      <span class="ch-num">第三十九品</span>
+      <h2 class="ch-name">入法界品</h2>
+    </div>
+    <div class="scroll-grid">
+      <a href="section39a.html" class="scroll-card"><span class="vol">卷</span>60</a>
+      <a href="section39b.html" class="scroll-card"><span class="vol">卷</span>61</a>
+      <a href="section39c.html" class="scroll-card"><span class="vol">卷</span>62</a>
+      <a href="section39d.html" class="scroll-card"><span class="vol">卷</span>63</a>
+      <a href="section39e.html" class="scroll-card"><span class="vol">卷</span>64</a>
+      <a href="section39f.html" class="scroll-card"><span class="vol">卷</span>65</a>
+      <a href="section39g.html" class="scroll-card"><span class="vol">卷</span>66</a>
+      <a href="section39h.html" class="scroll-card"><span class="vol">卷</span>67</a>
+      <a href="section39i.html" class="scroll-card"><span class="vol">卷</span>68</a>
+      <a href="section39j.html" class="scroll-card"><span class="vol">卷</span>69</a>
+      <a href="section39k.html" class="scroll-card"><span class="vol">卷</span>70</a>
+      <a href="section39l.html" class="scroll-card"><span class="vol">卷</span>71</a>
+      <a href="section39m.html" class="scroll-card"><span class="vol">卷</span>72</a>
+      <a href="section39n.html" class="scroll-card"><span class="vol">卷</span>73</a>
+      <a href="section39o.html" class="scroll-card"><span class="vol">卷</span>74</a>
+      <a href="section39p.html" class="scroll-card"><span class="vol">卷</span>75</a>
+      <a href="section39q.html" class="scroll-card"><span class="vol">卷</span>76</a>
+      <a href="section39r.html" class="scroll-card"><span class="vol">卷</span>77</a>
+      <a href="section39s.html" class="scroll-card"><span class="vol">卷</span>78</a>
+      <a href="section39t.html" class="scroll-card"><span class="vol">卷</span>79</a>
+      <a href="section39u.html" class="scroll-card"><span class="vol">卷</span>80</a>
+    </div>
+  </div>
 
+</div><!-- /.chapter-list -->
 </main>
 
 <footer class="site-footer">
   <a href="https://lugh3456.github.io/DharmaGate/" class="footer-portal-link">The Dharma Gate · 法门无量</a>
-  <p>&copy; 2026 Avatamsaka Sutra Study</p>
+  <p>&copy; 2026 华严经研读</p>
 </footer>
 
 </body>
