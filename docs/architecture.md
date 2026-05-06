@@ -8,29 +8,42 @@ Static HTML + CSS + vanilla JS. No framework, no build tool, no dependencies bey
 
 ```
 HuayanSutra/
-├── index.html          Entry point — 39-chapter grid
-├── section1.html       One file per chapter (1–6 built; 7–39 to be added in batches)
+├── index.html              Entry point — 80-scroll grid
+├── section1a.html          One file per scroll (80 total)
 │   …
-├── section39.html
-├── css/
-│   └── style.css       Single shared stylesheet (copied verbatim from LotusSutra)
+├── section39u.html
+├── style.css               Single shared stylesheet
+├── source/
+│   └── scrolls/
+│       ├── scroll_01.md    Authoritative Chinese source text (80 files)
+│       │   …
+│       └── scroll_80.md
 └── docs/
-    └── *.md            Project documentation
+    ├── ai-context.md
+    ├── architecture.md
+    ├── roadmap.md
+    ├── audit-config.json   Audit configuration (pages.files list)
+    └── reference.py        HUAYAN dict {1..80: scroll_text}
+```
+
+Generator script (not in the repo root — lives in the Cowork outputs folder):
+```
+outputs/generate_scrolls.py   Reads source/scrolls/*.md + embedded DATA → writes all 80 HTML files
 ```
 
 ## Design decisions
 
-**One file per chapter.** Each `sectionN.html` is fully self-contained: no shared JS files, no includes, no template engine. The `toggleDetail()` and `speak()` functions are inlined in a `<script>` block at the bottom of every page. This is intentionally redundant — it means any page works in isolation, can be printed, can be opened as a standalone file, and has zero dependency on any other file except `css/style.css`.
+**Scroll-based pages, not chapter-based.** The 80-roll Śikṣānanda version (T0279) maps naturally to 80 pages — one per traditional scroll. Several shorter chapters are combined into a single scroll where the sutra itself groups them (e.g., Ch 3+4, Ch 7+8). This gives each page a meaningful textual unit without imposing an artificial chapter boundary.
 
-**CSS shared, JS inlined.** Style is shared across all pages through a single stylesheet. JavaScript is intentionally duplicated per page because it is tiny (< 30 lines) and the isolation benefit outweighs the duplication cost.
+**Generator script, not hand-written HTML.** All 80 pages are produced by `generate_scrolls.py`. The DATA dict in the script contains all 480 explanation card tuples and 80 bilingual summaries. Edits to content are made in the script and pages are regenerated — direct HTML editing is avoided. This makes bulk changes (template updates, nav fixes) a one-command operation.
 
-**Explanation cards: Chinese visible, English toggled.** The default state assumes a Chinese-literate reader. English explanations are available but hidden, revealed by a toggle button. This keeps the reading experience clean for the primary use case.
+**6 curated explanation cards per scroll.** Rather than annotating every line, each page has 6 carefully chosen passages that illuminate key Huayan philosophical concepts. Chinese explanations are always visible; English is toggled. This is intentionally sparse — audit `check_annotation_coverage` is set to `false`.
 
-**TTS targeting Ting-Ting.** The `speak()` function prefers the Ting-Ting zh-CN voice, which produces the most natural Classical Chinese reading on macOS/iOS. Falls back to any zh-CN voice if Ting-Ting is unavailable. Rate is set to 0.9 (slightly slower than default) for sutra reading.
+**CSS shared, JS inlined.** `style.css` is shared across all pages. JavaScript (`toggleDetail()`, `speak()`) is inlined per page — tiny, self-contained, and works if any page is opened in isolation.
 
-**Incremental build (6 chapters per session).** Index cards for unbuilt chapters use `<div class="chapter-card coming">` (not `<a>`) with `opacity: 0.5` and `pointer-events: none`. When a batch is built, those divs are replaced with live `<a>` links.
+**TTS targeting zh-CN.** The `speak()` function targets the zh-CN voice at rate 0.9. Falls back to any zh-CN voice if the preferred one is unavailable.
 
-**No next link on the current last built chapter.** The last built section's nav does not include a → next link. When the next batch is added, the previous last section's nav is updated to add it. This keeps navigation honest and prevents dead links.
+**Non-sequential filenames.** Files are named `sectionXy.html` (e.g., `section25a.html` through `section25j.html` for Ch 25's ten scrolls). The audit system uses a `pages.files` list rather than a numeric pattern to accommodate this.
 
 ## Hub-and-spoke portal model
 
@@ -56,3 +69,12 @@ Each spoke is an independent GitHub repo deployed to its own GitHub Pages URL. T
 --bg: #f7f0e6         /* page background */
 --card-bg: #fdf8f2    /* explanation card background */
 ```
+
+## Audit system
+
+Two Python scripts check the site before each push:
+
+- `audit_content.py` — verifies `chineseText` element matches `reference.py`, checks card coverage (disabled for this project)
+- `check_structure.py` — verifies required sections, elements, scripts, nav links, lang attribute, index links
+
+Config: `docs/audit-config.json` with `pages.files` list (non-sequential filenames require this instead of the standard `pages.pattern`).
